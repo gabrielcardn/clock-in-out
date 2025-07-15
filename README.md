@@ -18,7 +18,9 @@ Pré-requisitos:
 Passos para Execução:
 
 1. Clone o repositório:
+```
 git clone https://github.com/gabrielcardn/clock-in-out.git
+```
 
 2. Entre na pasta do projeto:
 cd ilumeo
