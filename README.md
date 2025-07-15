@@ -23,15 +23,21 @@ git clone https://github.com/gabrielcardn/clock-in-out.git
 ```
 
 2. Entre na pasta do projeto:
+```
 cd ilumeo
+```
 
 3. Construa as imagens e inicie os contêineres:
 Este comando irá construir as imagens para o frontend e o backend e iniciar todos os serviços (Frontend, Backend e Banco de Dados) em background.
+```
 docker-compose up --build -d
+```
 
 4. Popule o banco de dados com dados iniciais:
 Para ter usuários e códigos para testar, execute o seguinte comando. Ele roda o script "seed" dentro do contêiner do backend para criar usuários de exemplo.
+```
 docker-compose exec backend-api npx prisma db seed
+```
 
 -----------------------------------
 Acessando a Aplicação
