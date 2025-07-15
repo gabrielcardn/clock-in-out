@@ -1,0 +1,67 @@
+/* Este container agora é o 'card' de login */
+.loginContainer {
+  background-color: var(--surface-dark);
+  border-radius: 12px;
+  padding: 3rem; /* Aumentamos o espaçamento interno */
+  width: 100%;
+  max-width: 400px; /* Aumentamos a largura máxima */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem; /* Aumentamos o espaço entre o título e o formulário */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+}
+
+.title {
+  font-size: 2rem; /* Título maior */
+  font-weight: 700;
+  color: var(--primary-text);
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input {
+  background-color: var(--background-dark); /* Fundo mais escuro para contraste */
+  border: 1px solid var(--secondary-text);
+  border-radius: 8px;
+  padding: 1rem;
+  color: var(--primary-text);
+  font-size: 1.2rem; /* Fonte do input maior */
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 2px; /* Espaçamento entre letras para um look de "código" */
+}
+
+.input::placeholder {
+  color: var(--secondary-text);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.button {
+  background-color: var(--accent-orange);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  color: var(--background-dark);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: #ff5555;
+  font-size: 0.9rem;
+  height: 1rem; /* Garante que o layout não pule quando o erro aparece */
+  text-align: center;
+}

@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # --- SERVIÇO DO BANCO DE DADOS ---
+  postgres-db:
+    image: postgres:14-alpine
+    container_name: ilumeo_postgres_db
+    environment:
+      POSTGRES_USER: ilumeo_user
+      POSTGRES_PASSWORD: strong_password
+      POSTGRES_DB: ilumeo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # --- SERVIÇO DA API (BACKEND) ---
+  backend-api:    
+    build: ./backend
+    container_name: ilumeo_backend_api
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: "postgresql://ilumeo_user:strong_password@postgres-db:5432/ilumeo_db"
+    depends_on:
+      - postgres-db
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+
+  frontend-app:
+    build: ./frontend
+    container_name: ilumeo_frontend_app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend-api
+
+volumes:
+  pgdata:

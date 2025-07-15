@@ -1,0 +1,33 @@
+// Define o provedor do banco de dados e a URL (que vem do arquivo .env)
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define o gerador de cliente do Prisma, que usaremos para fazer queries
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Modelo para funcionarios
+model User {
+  id    String @id @default(uuid())
+  code  String @unique
+  name  String
+  email String @unique
+
+  timeEntries TimeEntry[]
+
+  createdAt DateTime @default(now())
+}
+
+model TimeEntry {
+  id        String   @id @default(uuid())
+  startTime DateTime
+  endTime   DateTime? // O '?' indica que este campo é opcional (pode ser nulo para um turno ativo)
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  createdAt DateTime @default(now())
+}
